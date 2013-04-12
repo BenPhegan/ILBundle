@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ResourceAssemblyLoader</id>
+    <version>1.0.0</version>
+    <authors>Ben Phegan</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Allows simple assembly loading.</description>
+  </metadata>
+  <files>
+    <file src="Content\*.*" target="Content" />
+    <file src="Tools\net40\*.*" target="Tools\Net40" />
+  </files>
+</package>

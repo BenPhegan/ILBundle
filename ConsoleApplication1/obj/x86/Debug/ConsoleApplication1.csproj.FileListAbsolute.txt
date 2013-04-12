@@ -1,0 +1,4 @@
+Y:\AutoFusionOverload\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+Y:\AutoFusionOverload\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+Y:\AutoFusionOverload\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
+Y:\AutoFusionOverload\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
