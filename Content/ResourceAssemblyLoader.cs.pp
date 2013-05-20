@@ -13,7 +13,7 @@ namespace $rootnamespace$
         static ResourceAssemblyLoader()
         {
             ExecutingAssembly = Assembly.GetExecutingAssembly();
-            ResourceNames = ExecutingAssembly.GetManifestResourceNames().Where(n => n.EndsWith(".dll")).ToList();
+            ResourceNames = ExecutingAssembly.GetManifestResourceNames().Where(n => n.EndsWith(".dll") || n.EndsWith(".exe")).ToList();
         }
 
         public static void RegisterAssemblyResolver()
@@ -21,27 +21,33 @@ namespace $rootnamespace$
             AppDomain.CurrentDomain.AssemblyResolve += (s, assembly) =>
             {
                 var assemblyName = new AssemblyName(assembly.Name);
-                var path = string.Format("{0}.dll", assemblyName.Name);
+                var paths = new List<string>{
+                	string.Format("{0}.dll", assemblyName.Name),
+                	string.Format("{0}.exe", assemblyName.Name)
+                	};
 
-                if (ResourceNames.Contains(path))
-                {
-                    using (var stream = ExecutingAssembly.GetManifestResourceStream(path))
-                    {
-                        if (stream == null)
-                            return null;
+				foreach(var path in paths)
+				{
+	                if (ResourceNames.Contains(path))
+	                {
+	                    using (var stream = ExecutingAssembly.GetManifestResourceStream(path))
+	                    {
+	                        if (stream == null)
+	                            return null;
 
-                        var bytes = new byte[stream.Length];
-                        stream.Read(bytes, 0, bytes.Length);
-                        try
-                        {
-                            return Assembly.Load(bytes);
-                        }
-                        catch (Exception ex)
-                        {
-                            System.Diagnostics.Debug.Print("Failed to load: {0}, Exception: {1}", path, ex.Message);
-                        }
-                    }
-                }
+	                        var bytes = new byte[stream.Length];
+	                        stream.Read(bytes, 0, bytes.Length);
+	                        try
+	                        {
+	                            return Assembly.Load(bytes);
+	                        }
+	                        catch (Exception ex)
+	                        {
+	                            System.Diagnostics.Debug.Print("Failed to load: {0}, Exception: {1}", path, ex.Message);
+	                        }
+	                    }
+	                }
+	            }
 
                 return null;
             };
