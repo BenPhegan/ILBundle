@@ -2,11 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>ResourceAssemblyLoader</id>
-    <version>1.0.0</version>
+    <version>$version$</version>
     <authors>Ben Phegan</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Allows simple assembly loading.</description>
-  </metadata>
+    <description>A simple hook of the AssemblyResolve event along with automatic creation and population of an Assembly Resource with referenced assemblies.  Magical, ILMerge-like behaviour, without the merge!</description>
+	<tags>ILMerge</tags>
+  <projectUrl>http://github.com/BenPhegan/ILBundle</projectUrl>
+</metadata>
   <files>
     <file src="Content\*.*" target="Content" />
     <file src="Tools\net40\*.*" target="Tools\Net40" />
