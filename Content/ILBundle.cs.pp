@@ -5,12 +5,12 @@ using System.Reflection;
 
 namespace $rootnamespace$
 {
-    public static class ResourceAssemblyLoader
+    public static class ILBundle
     {
         public static List<String> ResourceNames = new List<string>();
         public static Assembly ExecutingAssembly;
 
-        static ResourceAssemblyLoader()
+        static ILBundle()
         {
             ExecutingAssembly = Assembly.GetExecutingAssembly();
             ResourceNames = ExecutingAssembly.GetManifestResourceNames().Where(n => n.EndsWith(".dll") || n.EndsWith(".exe")).ToList();
