@@ -1,7 +1,7 @@
 # http://blogs.clariusconsulting.net/kzu/how-to-add-an-msbuild-import-to-a-project-on-nuget-install/
 param($installPath, $toolsPath, $package, $project)
     # This is the MSBuild targets file to add
-    $targetsFile = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($project.FileName), 'AssemblyResourceCreator.targets')
+    $targetsFile = [System.IO.Path]::Combine([System.IO.Path]::GetDirectoryName($project.FileName), 'ILBundle.targets')
     # Need to load MSBuild assembly if it's not loaded yet.
     Add-Type -AssemblyName 'Microsoft.Build, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
     # Grab the loaded MSBuild project for the project
