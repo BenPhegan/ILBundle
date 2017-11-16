@@ -7,8 +7,9 @@ namespace $rootnamespace$
 {
     public static class ILBundle
     {
-        public static List<String> ResourceNames = new List<string>();
+        public static List<string> ResourceNames = new List<string>();
         public static Assembly ExecutingAssembly;
+        public static Dictionary<string, Assembly> Assemblies = new Dictionary<string, Assembly>();
 
         static ILBundle()
         {
@@ -28,6 +29,11 @@ namespace $rootnamespace$
 
 				foreach(var path in paths)
 				{
+				    if (Assemblies.ContainsKey(path))
+				    {
+				        return Assemblies[path];
+				    }
+           
 	                if (ResourceNames.Contains(path))
 	                {
 	                    using (var stream = ExecutingAssembly.GetManifestResourceStream(path))
@@ -39,7 +45,8 @@ namespace $rootnamespace$
 	                        stream.Read(bytes, 0, bytes.Length);
 	                        try
 	                        {
-	                            return Assembly.Load(bytes);
+	                            Assemblies.Add(path,Assembly.Load(bytes));
+	                            return Assemblies[path];
 	                        }
 	                        catch (Exception ex)
 	                        {
