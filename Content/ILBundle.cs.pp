@@ -7,9 +7,9 @@ namespace $rootnamespace$
 {
     public static class ILBundle
     {
-        public static List<string> ResourceNames = new List<string>();
-        public static Assembly ExecutingAssembly;
-        public static Dictionary<string, Assembly> Assemblies = new Dictionary<string, Assembly>();
+        private static List<string> ResourceNames = new List<string>();
+        private static Assembly ExecutingAssembly;
+        private static Dictionary<string, Assembly> Assemblies = new Dictionary<string, Assembly>();
 
         static ILBundle()
         {
